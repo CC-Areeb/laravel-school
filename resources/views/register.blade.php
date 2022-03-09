@@ -67,8 +67,14 @@
 
 
 {{-- check boxes when the designation is student --}}
-<div id="subjects">
-    <h1>LOL</h1>
+<div id="subjects" class="subjects">
+    <ul class="list-group">
+            @foreach ($subjects ?? '' as $subject)
+            <li class="list-group-item fs-2 mx-5">
+                <input type="checkbox" class="form-check-input" id="btn-check" name="course_ids[]" value="{{$subject->id}}" autocomplete="off">
+                {{$subject->id}} - {{ $subject->course_offered }}
+            </li>
+            @endforeach 
 </div>
 {{-- check boxes when the designation is student --}}
 

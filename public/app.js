@@ -1,4 +1,16 @@
 $(document).ready(function() {
+  $('.show_all_users').hide();
+});
+
+$(document).ready(
+  function() {
+      $(".see_all_btn").click(function() {
+          $(".show_all_users").slideToggle('slow');
+      });
+  });
+
+
+$(document).ready(function() {
   $('.grade_table').hide();
 });
 

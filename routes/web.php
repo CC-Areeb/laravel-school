@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Login;
@@ -8,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Register;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\StudentCourseController;
 use RealRashid\SweetAlert\Facades\Alert;
 use function PHPUnit\Framework\returnSelf;
 
@@ -41,3 +43,5 @@ Route::get('/about', [AboutUsController::class, 'about']);
 
 Route::get('/forum', [ForumController::class, 'check']);
 Route::post('/forum', [ForumController::class, 'mail'])->name('forum');
+
+Route::get('list', [AdminController::class, 'list']);

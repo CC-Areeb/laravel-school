@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 return new class extends Migration
 {
     /**
@@ -15,13 +16,8 @@ return new class extends Migration
     {
         Schema::create('student_courses', function (Blueprint $table) {
             $table->id();
-            $table->foreign('id')->references('id')->on('registeration')->onDelete('cascade');
-            $table->string('Physics');
-            $table->string('Chemistry');
-            $table->string('Maths');
-            $table->string('Biology');
+            $table->string('course_offered');
             $table->timestamps();
-            
         });
     }
 
