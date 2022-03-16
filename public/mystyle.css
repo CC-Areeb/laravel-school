@@ -1,0 +1,28 @@
+.login_logo
+{
+    width: 100%;
+}
+
+.registration
+{
+    width: 100%;
+}
+
+/* select box validation */
+.error {
+    color: red;
+}
+span {
+    display: inline-block;
+    width: 150px;
+}
+input, select {
+    width: 150px;
+}
+.with-select > span,
+.with-select > label.error {
+    vertical-align: top;
+    margin-top: 5px;
+    display: inline-block;
+}
+/* select box validation */

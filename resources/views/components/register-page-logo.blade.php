@@ -1,0 +1,1 @@
+<img src="images/register_logo.jpg" class="img-fluid registration" alt="registration">
