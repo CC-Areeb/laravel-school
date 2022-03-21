@@ -47,7 +47,7 @@
         {{$slot}}
 
         <div class="col-12 text-center">
-            <button class="btn btn-outline-success fs-2" type="submit">Register Now</button>
+            <button class="btn btn-outline-success fs-2 register_btn" type="submit">Register Now</button>
         </div>
     </form>
 

@@ -15,9 +15,6 @@ class RegisterController extends Controller
     {
         $data = Designation::all();
         return view('register', ['designation' => $data]);
-
-        $course_data = StudentCourse::all();
-        return view('register', ['courses' => $course_data]);
     }
 
 
@@ -58,13 +55,13 @@ class RegisterController extends Controller
             $validator_2 = Validator::make($request->all(),[
                 'courses_id' => 'required|min:1'
             ]);
+            // dd(request()->all());
             
             if ($validator_2->fails())
             {
                 Alert::error('Error', 'cannot save info');
                 return redirect('registration');
             }
-
             else
             {
                 $users = Register::create([

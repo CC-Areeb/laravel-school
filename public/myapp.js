@@ -20,6 +20,10 @@
 })()
 
 
+
+
+
+
 $(document).ready(function(){
   $("select").on('change',function(){
     var val = $(this).val();
@@ -31,17 +35,24 @@ $(document).ready(function(){
             result.map(function(el,i) {
                 var html = `
                     <div class="form-check">
-                      <label class="form-check-label" for="courses_id">
+                      <label class="form-check-label  " for="courses_id">
                         <input class="form-check-input" type="checkbox" name="courses_id[]"
                         id="${el.Courses}" value="${el.id}"> ${el.Courses}
                       </label>
-                   </div>
+                    </div>
                 `;
                 $(".courses").append(html);
             })
           }
       }});
     }
+
+    else
+    {
+      $(".courses").html(''); 
+    }
+
+    
       // $( "select option:selected").each(function(){
       //     if($(this).attr("value")!="3")
       //     {
@@ -55,3 +66,37 @@ $(document).ready(function(){
       // });
   });
 });
+
+
+// $(document).ready(function()
+// {
+//   $('.register_btn').on('click', function(e)
+//   {
+//     e.preventDefault();
+
+//     const courses_id = [];
+
+//     $('.courses_id').each(function()
+//     {
+//       if($(this).is(":checked"))
+//       {
+//         courses_id.push($(this).val())
+//       }
+
+//       $.ajax
+//       ({
+//           url: "/insert-subjects",
+//           type: 'POST',
+//           data:
+//           {
+//             "_token": "{{ csrf_token() }}",
+//             courses_id: courses_id
+//           },
+//           success:function(response)
+//           {
+
+//           }
+//       });
+//     });
+//   });
+// });
