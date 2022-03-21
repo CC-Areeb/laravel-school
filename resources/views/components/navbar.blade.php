@@ -24,9 +24,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="news">Newsletter</a>
+                    <a class="nav-link" href="newsletter">Newsletter</a>
                 </li>
-
             </ul>
         </div>  
 

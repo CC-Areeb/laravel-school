@@ -1,21 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Register;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
-use Illuminate\Contracts\Validation\Validator;
-use Reflector;
 
 class LoginController extends Controller
 {
-    protected function loginForm()
+    public function loginForm()
     {
         return view('login');
     }
 
-    
     /**
      * Handle an authentication attempt.
      *
@@ -23,11 +22,44 @@ class LoginController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    protected function loginUser(Request $request)
+    protected function authenticate(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
+        $validator = Validator::make($request->all(), [
+            'email' => 'required',
+            // exists (is the method of laravel):table_name, column_name
+            'password' => 'required|exists:registers,password'
         ]);
+
+        if ($validator->fails())
+        {
+            Alert::error('Error', 'incorrect info');
+            return redirect('login');
+        }
+
+        $login_info = Register::where([
+            ['user_email', $request->email],
+            ['password', $request->password]
+        ]
+        )->first();
+        if ($login_info->designation_id == 1)
+        {
+            return redirect('admin');
+        }
+
+        elseif($login_info->designation_id == 2) 
+        {
+            return redirect('teacher');
+        }
+
+        elseif($login_info->designation_id == 3) 
+        {
+            return redirect('student');
+        }
+
+        else
+        {
+            Alert::error('Error', 'incorrect info');
+            return redirect('login');
+        }
     }
 }

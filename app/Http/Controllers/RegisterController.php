@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Designation;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Register;
+use App\Models\StudentCourse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -14,6 +15,9 @@ class RegisterController extends Controller
     {
         $data = Designation::all();
         return view('register', ['designation' => $data]);
+
+        $course_data = StudentCourse::all();
+        return view('register', ['courses' => $course_data]);
     }
 
 
@@ -25,16 +29,16 @@ class RegisterController extends Controller
             'user_email' => 'required|unique:registers',
             'password' => 'required|min:7|confirmed',
             'address' => 'required',
-            'designation_id' => 'required|in:1,2'
+            'designation_id' => 'required|in:1,2,3',
         ]);
-
-        if ($validator->fails())
+        
+        if ($validator->fails()) 
         {
             Alert::error('Error', 'cannot save info');
             return redirect('registration');
         }
 
-        else
+        elseif ($request->designation_id == 1 || $request->designation_id == 2)
         {
             $users = Register::create([
                 'first_name' => request('first_name'),
@@ -46,11 +50,43 @@ class RegisterController extends Controller
             ]);
             Alert::success('Okay', 'Info has been saved');
             return redirect('login');
+        } 
+
+        elseif($request->designation_id == 3)
+        {
+
+            $validator_2 = Validator::make($request->all(),[
+                'courses_id' => 'required|min:1'
+            ]);
+            
+            if ($validator_2->fails())
+            {
+                Alert::error('Error', 'cannot save info');
+                return redirect('registration');
+            }
+
+            else
+            {
+                $users = Register::create([
+                    'first_name' => request('first_name'),
+                    'last_name' => request('last_name'),
+                    'user_email' => request('user_email'),
+                    'password' => request('password'),
+                    'address' => request('address'),
+                    'designation_id' => request('designation_id'),
+                    'courses_id' => request('courses_id')
+                ]);
+                Alert::success('Okay', 'Info has been saved');
+                return redirect('login');
+            }
         }
     }
+
+    protected function getSubjects() {
+        $course_data = StudentCourse::all();
+        return $course_data;
+    }
 }
-
-
 
 /*
 This is another way of inserting data into database

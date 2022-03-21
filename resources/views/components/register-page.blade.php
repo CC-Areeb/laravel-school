@@ -1,6 +1,6 @@
 <div class="register_form">
     
-    <form action="registration" method="POST"  class="register_form row g-3 needs-validation" novalidate>
+    <form action="registration" method="POST"  class="register_form row g-3 needs-validation" novalidate autocomplete="on">
         @csrf
         <label for="first_name" class="form-label">First name
             <input type="text" class="form-control" name="first_name" id="first_name" required>
@@ -47,7 +47,7 @@
         {{$slot}}
 
         <div class="col-12 text-center">
-            <button class="btn btn-success fs-2" type="submit">Register Now</button>
+            <button class="btn btn-outline-success fs-2" type="submit">Register Now</button>
         </div>
     </form>
 
