@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CourseRegister;
 use App\Models\Designation;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Register;
+use App\Models\RegisterStudent;
 use App\Models\StudentCourse;
+use App\Models\StudentDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,7 +20,6 @@ class RegisterController extends Controller
         return view('register', ['designation' => $data]);
     }
 
-
     protected function registerUser(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -28,6 +30,7 @@ class RegisterController extends Controller
             'address' => 'required',
             'designation_id' => 'required|in:1,2,3',
         ]);
+        
         
         if ($validator->fails()) 
         {
@@ -55,13 +58,13 @@ class RegisterController extends Controller
             $validator_2 = Validator::make($request->all(),[
                 'courses_id' => 'required|min:1'
             ]);
-            // dd(request()->all());
             
             if ($validator_2->fails())
             {
                 Alert::error('Error', 'cannot save info');
                 return redirect('registration');
             }
+
             else
             {
                 $users = Register::create([
@@ -71,8 +74,15 @@ class RegisterController extends Controller
                     'password' => request('password'),
                     'address' => request('address'),
                     'designation_id' => request('designation_id'),
-                    'courses_id' => request('courses_id')
                 ]);
+                $checked_subjects = $request->courses_id;
+                foreach ($request->courses_id as $key => $value)
+                {
+                    $student = RegisterStudent::create([
+                        'register_id' => $users->id,
+                        'courses_id' => request('courses_id')[$key],
+                    ]);
+                }
                 Alert::success('Okay', 'Info has been saved');
                 return redirect('login');
             }
@@ -84,6 +94,37 @@ class RegisterController extends Controller
         return $course_data;
     }
 }
+
+
+/*
+
+                $users = Register::create([
+                    'first_name' => request('first_name'),
+                    'last_name' => request('last_name'),
+                    'user_email' => request('user_email'),
+                    'password' => request('password'),
+                    'address' => request('address'),
+                    'designation_id' => request('designation_id'),
+                ]);
+
+
+
+
+
+
+
+
+$courses = $request->courses_id;
+
+        foreach ($courses as $course) {
+            # code
+            dd($course);
+        }
+
+*/
+
+
+
 
 /*
 This is another way of inserting data into database

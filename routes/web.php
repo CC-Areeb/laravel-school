@@ -23,8 +23,7 @@ Route::get('/newsletter', function () {
 Route::get('/registration', [RegisterController::class, 'registerForm'])->middleware('guest');
 Route::post('/registration', [RegisterController::class, 'registerUser'])->middleware('guest');
 Route::get('/get-subjects', [RegisterController::class, 'getSubjects'])->middleware('guest');
-Route::post('/insert-subjects', [RegisterController::class, 'registerUser'])->middleware('guest');
-
+Route::post('/insert-subjects', [RegisterController::class, 'registerUser']);
 
 // login //
 Route::get('/login', [LoginController::class, 'loginForm'])->name('login');

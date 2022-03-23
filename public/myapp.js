@@ -36,7 +36,7 @@ $(document).ready(function(){
                 var html = `
                     <div class="form-check">
                       <label class="form-check-label  " for="courses_id">
-                        <input class="form-check-input" type="checkbox" name="courses_id[]"
+                        <input class="form-check-input student_course" type="checkbox" name="courses_id[]"
                         id="${el.Courses}" value="${el.id}"> ${el.Courses}
                       </label>
                     </div>
@@ -52,51 +52,36 @@ $(document).ready(function(){
       $(".courses").html(''); 
     }
 
-    
-      // $( "select option:selected").each(function(){
-      //     if($(this).attr("value")!="3")
-      //     {
-      //         $(".courses").hide(); 
-      //     }
 
-      //     else
-      //     {
-      //       $(".courses").show();
-      //     }
-      // });
+    $(document).ready(function()
+    {
+      $('.register_btn').on('click', function()
+      {
+        e.preventDefault();
+
+        const courses_id = [];
+
+        $('.student_course').each(function()
+        {
+          if($(this).is(":checked"))
+          {
+            courses_id.push($(this).val())
+          }
+        });
+
+        $.ajax({
+          url:"/insert-subjects",
+          type: 'POST',
+
+        });
+
+      });
+    });
+
+    // $("input[name='courses_id']").on('change', function(){
+      
+    // })
   });
 });
 
 
-// $(document).ready(function()
-// {
-//   $('.register_btn').on('click', function(e)
-//   {
-//     e.preventDefault();
-
-//     const courses_id = [];
-
-//     $('.courses_id').each(function()
-//     {
-//       if($(this).is(":checked"))
-//       {
-//         courses_id.push($(this).val())
-//       }
-
-//       $.ajax
-//       ({
-//           url: "/insert-subjects",
-//           type: 'POST',
-//           data:
-//           {
-//             "_token": "{{ csrf_token() }}",
-//             courses_id: courses_id
-//           },
-//           success:function(response)
-//           {
-
-//           }
-//       });
-//     });
-//   });
-// });

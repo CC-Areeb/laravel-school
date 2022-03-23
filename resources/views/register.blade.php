@@ -37,6 +37,8 @@
                     </div>
                     @endforeach --}}
                 </div>
+            <input type='hidden' id="course_id" value="" />
+
                 {{-- @endisset --}}
 
             </x-register-page>

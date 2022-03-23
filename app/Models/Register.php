@@ -11,4 +11,9 @@ class Register extends Model
     use HasFactory;
     use SoftDeletes;
     protected $guarded = [];
+
+    public function course()
+    {
+        return $this->belongsToMany(RegisterStudent::class);
+    }
 }

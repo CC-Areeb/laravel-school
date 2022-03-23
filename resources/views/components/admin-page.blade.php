@@ -8,6 +8,7 @@
         <th>User email</th>
         <th>User address</th>
         <th>Designation Id</th>
+        {{-- <th>Student course id</th> --}}
         <th>Account created</th>
         <th>Action</th>
     </tr>

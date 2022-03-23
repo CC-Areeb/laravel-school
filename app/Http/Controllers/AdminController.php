@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Register;
+use App\Models\RegisterStudent;
 use Illuminate\Http\Request;
 use Reflector;
 
@@ -13,6 +14,9 @@ class AdminController extends Controller
     {
         $info = Register::all();
         return view('admin', ['users' => $info]);
+
+        $all_subjects = RegisterStudent::all();
+        return view('admin', ['all_subjects' => $all_subjects]);
     }
 
     protected function updateUserBtn($id)
