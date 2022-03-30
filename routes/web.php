@@ -5,6 +5,8 @@ use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -45,3 +47,18 @@ Route::post('/update', [AdminController::class, 'updateInfo']);
 Route::get('/delete/{id}', [AdminController::class, 'deleteUser']);
 
 // temporary route for admin //
+
+
+
+
+// routes for teacher //
+Route::get('/teacher', [TeacherController::class, 'showStudents']);
+Route::post('/present', [TeacherController::class, 'status'])->name('status');
+// routes for teacher //
+
+
+
+
+// student routes //
+Route::get('/student', [StudentController::class, 'seeData']);
+// student routes //

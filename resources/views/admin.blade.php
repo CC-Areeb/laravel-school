@@ -12,7 +12,6 @@
             <th>{{$user->user_email}}</th>
             <th>{{$user->address}}</th>
             <th>{{$user->designation_id}}</th>
-            {{-- <th>{{$user->course_id}}</th> --}}
             <th>{{$user->created_at}}</th>
             <th>
                     <a href={{"update/".$user->id}} class="update_btn btn btn-info">Update</a>

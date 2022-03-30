@@ -16,4 +16,9 @@ class Register extends Model
     {
         return $this->belongsToMany(RegisterStudent::class);
     }
+
+    public function status()
+    {
+        return $this->hasMany(AttendanceRegister::class);
+    }
 }

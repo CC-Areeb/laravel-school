@@ -1,5 +1,11 @@
 @extends('layouts.master')
 
 @section('newsletter')
-    <x-newsletter-page></x-newsletter->
+    <livewire:news-letter news = "news" />
 @endsection
+
+{{--
+    news 
+    
+    news = "news"
+--}}

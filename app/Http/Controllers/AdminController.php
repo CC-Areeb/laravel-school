@@ -14,12 +14,9 @@ class AdminController extends Controller
     {
         $info = Register::all();
         return view('admin', ['users' => $info]);
-
-        $all_subjects = RegisterStudent::all();
-        return view('admin', ['all_subjects' => $all_subjects]);
     }
 
-    protected function updateUserBtn($id)
+protected function updateUserBtn($id)
     {
         $data = Register::find($id);
         return view('/update', ['data' => $data]);

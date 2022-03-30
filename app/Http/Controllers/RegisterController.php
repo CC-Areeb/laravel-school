@@ -31,7 +31,6 @@ class RegisterController extends Controller
             'designation_id' => 'required|in:1,2,3',
         ]);
         
-        
         if ($validator->fails()) 
         {
             Alert::error('Error', 'cannot save info');
