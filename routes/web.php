@@ -54,7 +54,21 @@ Route::get('/delete/{id}', [AdminController::class, 'deleteUser']);
 // routes for teacher //
 Route::get('/teacher', [TeacherController::class, 'showStudents']);
 Route::post('/present', [TeacherController::class, 'status'])->name('status');
+
+
+Route::get('/delete_attendance/{id}', [TeacherController::class, 'attendance_delete'])->name('delete_attendance');
+Route::get('/update_attendance', [TeacherController::class, 'attendance_update'])->name('update_attendance');
+
+
+Route::get('/edit', [TeacherController::class, 'edit_page'])->name('edit');
+Route::get('/deleteAttendance/{register_id}', [TeacherController::class, 'deleteFunction'])->name('deleteAttendance');
+
+Route::get('/restoreAttendance', [TeacherController::class, 'restoreFunction'])->name('restoreAttendance');
+
+Route::get('/updateAttendance/{register_id}', [TeacherController::class, 'showSingleData'])->name('updateAttendance');
+Route::post('/updateAttendance', [[TeacherController::class, 'updateFunction']]);
 // routes for teacher //
+
 
 
 

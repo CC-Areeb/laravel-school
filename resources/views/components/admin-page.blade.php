@@ -1,7 +1,7 @@
 {{-- See all users table (including admins) --}}
 
 
-<table class="table table-dark table-striped mt-5 text-center">
+<table class="table table-light table-striped text-center">
     <tr>
         <th>User Id</th>
         <th colspan="2">Full Name</th>

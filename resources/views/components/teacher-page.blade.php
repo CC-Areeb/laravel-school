@@ -1,5 +1,5 @@
 <div>
-    <table class="table table-dark table-striped">
+    <table class="table table-light table-striped">
         <thead>
             <tr>
                 <th>User Id</th>
@@ -13,4 +13,5 @@
             {{$slot}}
 
         </thead>
+    </table>
 </div>

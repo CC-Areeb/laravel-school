@@ -47,7 +47,7 @@ class RegisterController extends Controller
                 'address' => request('address'),
                 'designation_id' => request('designation_id')
             ]);
-            Alert::success('Okay', 'Info has been saved');
+            Alert::success('😁 Okay', 'Info has been saved');
             return redirect('login');
         } 
 
@@ -60,7 +60,7 @@ class RegisterController extends Controller
             
             if ($validator_2->fails())
             {
-                Alert::error('Error', 'cannot save info');
+                Alert::error('😩 Error', 'cannot save info');
                 return redirect('registration');
             }
 
@@ -82,7 +82,7 @@ class RegisterController extends Controller
                         'courses_id' => request('courses_id')[$key],
                     ]);
                 }
-                Alert::success('Okay', 'Info has been saved');
+                Alert::success('😁 Okay', 'Info has been saved');
                 return redirect('login');
             }
         }

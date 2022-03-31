@@ -5,7 +5,7 @@
         <div class="row">
 
             <div class="col-7">
-
+                <img src="/images/update-logo.jpg" class="img-fluid" alt="update-logo">
             </div>
 
             <div class="col-5">

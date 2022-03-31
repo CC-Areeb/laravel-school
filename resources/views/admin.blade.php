@@ -14,7 +14,7 @@
             <th>{{$user->designation_id}}</th>
             <th>{{$user->created_at}}</th>
             <th>
-                    <a href={{"update/".$user->id}} class="update_btn btn btn-info">Update</a>
+                    <a href={{"update/". $user->id}} class="update_btn btn btn-info">Update</a>
                     &nbsp;
                     <a href={{"delete/".$user->id}} class="delete_btn btn btn-danger">Delete</a>
             </th>

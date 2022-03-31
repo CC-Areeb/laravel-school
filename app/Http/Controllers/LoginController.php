@@ -32,7 +32,7 @@ class LoginController extends Controller
 
         if ($validator->fails())
         {
-            Alert::error('Error', 'incorrect info');
+            Alert::error('😩 Error', 'incorrect info');
             return redirect('login');
         }
 
@@ -58,7 +58,7 @@ class LoginController extends Controller
 
         else
         {
-            Alert::error('Error', 'incorrect info');
+            Alert::error('😩 Error', 'incorrect info');
             return redirect('login');
         }
     }
